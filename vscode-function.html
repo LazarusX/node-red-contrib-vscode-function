@@ -12,7 +12,7 @@
         <div style="position: absolute; right:0; bottom:calc(100% + 3px);">
             <button id="node-function-expand-js" class="editor-button editor-button-small">
                 <i class="fa fa-expand">
-                    <a href="command:azure-iot-toolkit.selectIoTHub">Open in VS Code</a>
+                    Open in VS Code
                 </i>
             </button>
         </div>
@@ -128,20 +128,10 @@
 
             $("#node-function-expand-js").click(function (e) {
                 e.preventDefault();
-                var value = that.editor.getValue();
-                console.log("fuck")
-                // RED.editor.editJavaScript({
-                //     value: value,
-                //     cursor: that.editor.getCursorPosition(),
-                //     complete: function (v, cursor) {
-                //         that.editor.setValue(v, -1);
-                //         that.editor.gotoLine(cursor.row + 1, cursor.column, false);
-                //         setTimeout(function () {
-                //             that.editor.focus();
-                //         }, 300);
-                //     }
-                // })
-                location.href = "command:azure-iot-toolkit.selectIoTHub"
+                flowId = that.z;
+                nodeId = that.id;
+                $.get(`http://localhost:10086/vscode-invoke?flow=${flowId}&node=${nodeId}`, function (data) {
+                });
             })
         },
         oneditsave: function () {
